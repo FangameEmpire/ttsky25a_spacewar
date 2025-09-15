@@ -238,7 +238,7 @@ module tt_um_spacewar (
       B <= 0;
     end else begin
       if (video_active) begin
-        {R, G, B} <= ({{2{do_square_0}}, {2{do_angle_square | do_ship_0 | do_ship_1}}, {2{do_square_1}}};
+        {R, G, B} <= {{2{do_square_0}}, {2{do_angle_square | do_ship_0 | do_ship_1}}, {2{do_square_1}}};
       end else begin
         {R, G, B} <= 0;
       end
