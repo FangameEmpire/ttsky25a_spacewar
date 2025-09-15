@@ -17,7 +17,7 @@ module tt_um_spacewar (
 );
 
   // Unused outputs assigned to 0.
-  assign uio_out[6:0] = 0;
+  assign uio_out[7:0] = 0;
   assign uio_oe[6:0]  = 0;
   assign uio_oe[7]  = 1;
 
@@ -164,31 +164,19 @@ module tt_um_spacewar (
                            ((pix_x[9:1] == 9'b011000000) && (pix_y[9:1] < 9'b010000001) && (pix_y[9:1] > 9'b000111110)) || 
                            ((pix_y[9:1] == 9'b010000000) && (pix_x[9:1] < 9'b011000001) && (pix_x[9:1] > 9'b001111110)) || 
                            ((pix_y[9:1] == 9'b000111111) && (pix_x[9:1] < 9'b011000001) && (pix_x[9:1] > 9'b001111110));
-  assign do_angle_square = 0 || ((pix_x[9:4] == {3'b010, ship_angle_0}) && (pix_y[9:4] == {3'b001, ship_angle_1}));
-
-  // Draw sample ships
-  wire sample_ship_diag, sample_ship_straight, do_sample_ship;
-  assign sample_ship_straight = (((pix_y - square_y_1) == ((square_x_1 - pix_x + 16) >> 1)) || 
-                                 ((pix_y - square_y_1) == ((pix_x - square_x_1 + 16) >> 1))) &&
-                                1; // do_square_1;
-  assign sample_ship_diag = (((pix_y - square_y_0) == ((pix_x - square_x_0) >> 1)) || 
-                             ((pix_y - square_y_0) == ((pix_x - square_x_0) << 1))) &&
-                            0; // do_square_0;
-  assign do_sample_ship = sample_ship_straight || sample_ship_diag;
+  assign do_angle_square = do_angle_border || ((pix_x[9:4] == {3'b010, ship_angle_0}) && (pix_y[9:4] == {3'b001, ship_angle_1}));
 
   // Ship pattern equations
-  wire [7:0] do_ship_angle_0, do_ship_angle_1;
+  wire do_ship_angle_0;
   assign do_ship_angle_0[0] = ((pix_y - square_y_0) == (pix_x - square_x_0 - 8) << 1) || 
                               ((square_y_0 - pix_y) == (pix_x - square_x_0 - 8) << 1) || 
                               (((pix_y - square_y_0) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 >= 8)) ||
                               (((square_y_0 - pix_y + 24) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 < 8));
 
   // Draw ships
-  assign do_ship_angle_0[7:1] = 0;
-  assign do_ship_angle_1[7:0] = 0;
   wire do_ship_0, do_ship_1;
-  assign do_ship_0 = do_square_0 & do_ship_angle_0[0];
-  assign do_ship_1 = do_square_1 & do_ship_angle_1[ship_angle_1];
+  assign do_ship_0 = do_square_0 & do_ship_angle_0;
+  assign do_ship_1 = 0;
 
   hvsync_generator vga_sync_gen (
       .clk(clk),
