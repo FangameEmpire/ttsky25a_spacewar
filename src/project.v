@@ -168,10 +168,10 @@ module tt_um_spacewar (
 
   // Ship pattern equations
   wire do_ship_angle_0;
-  assign do_ship_angle_0[0] = ((pix_y - square_y_0) == (pix_x - square_x_0 - 8) << 1) || 
-                              ((square_y_0 - pix_y) == (pix_x - square_x_0 - 8) << 1) || 
-                              (((pix_y - square_y_0) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 >= 8)) ||
-                              (((square_y_0 - pix_y + 24) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 < 8));
+  assign do_ship_angle_0 = ((pix_y - square_y_0) == (pix_x - square_x_0 - 8) << 1) || 
+                           ((square_y_0 - pix_y) == (pix_x - square_x_0 - 8) << 1) || 
+                           (((pix_y - square_y_0) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 >= 8)) ||
+                           (((square_y_0 - pix_y + 24) == (pix_x - square_x_0 + 16) >> 1) & (pix_x - square_x_0 < 8));
 
   // Draw ships
   wire do_ship_0, do_ship_1;
