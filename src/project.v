@@ -164,7 +164,7 @@ module tt_um_spacewar (
                            ((pix_x[9:1] == 9'b011000000) && (pix_y[9:1] < 9'b010000001) && (pix_y[9:1] > 9'b000111110)) || 
                            ((pix_y[9:1] == 9'b010000000) && (pix_x[9:1] < 9'b011000001) && (pix_x[9:1] > 9'b001111110)) || 
                            ((pix_y[9:1] == 9'b000111111) && (pix_x[9:1] < 9'b011000001) && (pix_x[9:1] > 9'b001111110));
-  assign do_angle_square = do_angle_border || ((pix_x[9:4] == {3'b010, ship_angle_0}) && (pix_y[9:4] == {3'b001, ship_angle_1}));
+  assign do_angle_square = 0 || ((pix_x[9:4] == {3'b010, ship_angle_0}) && (pix_y[9:4] == {3'b001, ship_angle_1}));
 
   // Draw sample ships
   wire sample_ship_diag, sample_ship_straight, do_sample_ship;
