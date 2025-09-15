@@ -13,8 +13,8 @@ The project will be a game that adheres to the old demoscene specifications (VGA
 
 ## How to test
 
-Cocotb coming soon
+Cocotb coming soon.
 
 ## External hardware
 
-Plans VGA, Audio, SNES, and the two scope XY PMODs
+VGA and SNES PMODs.

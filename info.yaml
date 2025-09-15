@@ -3,7 +3,7 @@ project:
   title:        "Spacewar"      # Project title
   author:       "Nicklaus Thompson"      # Your name
   discord:      "fangameempire"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "A scaled-down Spacewar game with VGA and scope XY mode."      # One line description of what your project does
+  description:  "GRaphics prototypes for a scaled-down Spacewar game."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
@@ -51,7 +51,7 @@ pinout:
   uio[4]: ""
   uio[5]: ""
   uio[6]: ""
-  uio[7]: "PWM Output"
+  uio[7]: ""
 
 # Do not change!
 yaml_version: 6
